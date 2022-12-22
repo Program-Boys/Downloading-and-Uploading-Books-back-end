@@ -1,13 +1,21 @@
-import { PrismaClient } from "@prisma/client";
-import { randomUUID } from "crypto";
-import { IBookRequest } from "../../interfaces/books/books";
-import { Books } from "../../models/book.model";
+import { PrismaClient, Books } from '@prisma/client';
+import { randomUUID } from 'crypto';
+import { IBookRequest } from '../../interfaces/books/books';
 
 const createBookService = async ({
   name,
   gender,
 }: IBookRequest): Promise<Books> => {
   const prisma = new PrismaClient();
+
+  const user = await prisma.user.findFirst({
+    include: {
+      books: true,
+    },
+    where: {
+      email: '4912ad29-f6dd-4efb-a94f-d7ff1d2bb9fc',
+    },
+  });
 
   const book = await prisma.books.findFirst({
     where: {
@@ -16,15 +24,19 @@ const createBookService = async ({
   });
 
   if (book) {
-    throw new Error("This book already exists");
+    throw new Error('This book already exists');
   }
 
   return await prisma.books.create({
+    include: {
+      owner: true,
+    },
     data: {
       id: randomUUID(),
       name,
       gender,
       createdAt: new Date(),
+      ownerId: user?.id,
     },
   });
 };
