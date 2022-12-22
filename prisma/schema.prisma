@@ -20,7 +20,8 @@ model User {
 model Books {
   id String @id
   name String
-  genri String
-  owner User @relation(fields: [ownerId], references: [id])
-  ownerId String
+  gender String
+  owner User? @relation(fields: [ownerId], references: [id])
+  ownerId String?
+  createdAt DateTime @default(now())
 }
