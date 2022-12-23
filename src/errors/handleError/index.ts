@@ -1,7 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { AppError } from '../AppError';
 
-export const handleErrors = (err: any, req: Request, res: Response) => {
+export const handleErrors = (
+  err: any,
+  req: Request,
+  res: Response,
+  _: NextFunction,
+) => {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
       status: 'error',
