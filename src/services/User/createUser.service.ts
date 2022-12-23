@@ -2,6 +2,7 @@ import { PrismaClient, User } from '@prisma/client';
 import bycrpt from 'bcrypt';
 import { randomUUID } from 'crypto';
 import { IUserRequest } from '../../interfaces/user/user';
+import { AppError } from '../../errors/AppError';
 
 const createUserService = async ({
   email,
@@ -10,7 +11,7 @@ const createUserService = async ({
   const prisma = new PrismaClient();
 
   if (email !== 'angela@gmail.com') {
-    throw new Error('You are not admin');
+    throw new AppError(400, 'You are not admin');
   }
 
   const user = await prisma.user.create({
