@@ -1,5 +1,6 @@
 import { PrismaClient, Books } from '@prisma/client';
 import { randomUUID } from 'crypto';
+import { AppError } from '../../errors/AppError';
 import { IBookRequest } from '../../interfaces/books/books';
 
 const createBookService = async ({
@@ -24,7 +25,7 @@ const createBookService = async ({
   });
 
   if (book) {
-    throw new Error('This book already exists');
+    throw new AppError(400, 'This book already exists');
   }
 
   return await prisma.books.create({
