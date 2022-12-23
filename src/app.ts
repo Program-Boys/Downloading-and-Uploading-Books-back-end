@@ -8,6 +8,7 @@ let cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use('/files', express.static('uploads'));
 app.use(handleErrors);
 app.use('/books', routes);
 app.use('/user', routesUser);
