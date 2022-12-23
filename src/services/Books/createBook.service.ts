@@ -14,7 +14,9 @@ const createBookService = async ({
       books: true,
     },
     where: {
-      id: '776d634d-879b-4d18-bc80-e06714841847' || '',
+      id:
+        '776d634d-879b-4d18-bc80-e06714841847' ||
+        '657ad93b-a1f2-489b-a427-5fbecc3b9459',
     },
   });
 
@@ -29,9 +31,6 @@ const createBookService = async ({
   }
 
   return await prisma.books.create({
-    include: {
-      owner: true,
-    },
     data: {
       id: randomUUID(),
       name,
