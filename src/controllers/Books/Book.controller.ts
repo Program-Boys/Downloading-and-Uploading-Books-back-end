@@ -6,7 +6,10 @@ export class BooksControllers {
   async create(req: Request, res: Response) {
     const { name, gender } = req.body;
 
-    const createdBook = await createBookService({ name, gender });
+    const createdBook = await createBookService(req, {
+      name,
+      gender,
+    });
     return res.status(201).json(createdBook);
   }
 
