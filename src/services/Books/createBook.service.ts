@@ -1,12 +1,13 @@
+import { Request } from 'express';
 import { PrismaClient, Books } from '@prisma/client';
 import { randomUUID } from 'crypto';
 import { AppError } from '../../errors/AppError';
 import { IBookRequest } from '../../interfaces/books/books';
 
-const createBookService = async ({
-  name,
-  gender,
-}: IBookRequest): Promise<Books> => {
+const createBookService = async (
+  req: Request,
+  { name, gender }: IBookRequest,
+): Promise<Books> => {
   const prisma = new PrismaClient();
 
   const user = await prisma.user.findFirst({
@@ -20,15 +21,18 @@ const createBookService = async ({
     },
   });
 
-  const book = await prisma.books.findFirst({
+  const bookAlreadyExists = await prisma.books.findFirst({
     where: {
-      name,
+      name: req.file?.originalname!,
     },
   });
 
-  if (book) {
+  if (bookAlreadyExists) {
     throw new AppError(400, 'This book already exists');
   }
+
+  name = req.file?.originalname!;
+  gender = req.file?.originalname!;
 
   return await prisma.books.create({
     data: {

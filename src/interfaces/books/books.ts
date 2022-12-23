@@ -1,4 +1,4 @@
 export interface IBookRequest {
-  name: string;
-  gender: string;
+  name: string | undefined;
+  gender: string | undefined;
 }
