@@ -2,7 +2,7 @@ import { prisma } from '../../../prisma/client/client';
 import { AppError } from '../../errors/AppError';
 import { BookDeletion } from '../../interfaces/books/books';
 
-const deleteBookService = async ({ id }: BookDeletion): Promise<void> => {
+const deleteBookService = async ({ id }: BookDeletion): Promise<boolean> => {
   const bookToDelete = await prisma.books.findFirst({
     where: {
       id,
@@ -13,11 +13,13 @@ const deleteBookService = async ({ id }: BookDeletion): Promise<void> => {
     throw new AppError(404, 'Book not found');
   }
 
-  await prisma.books.delete({
+  const bookToBeDeleted = await prisma.books.delete({
     where: {
-      id,
+      id: bookToDelete.id,
     },
   });
+
+  return true;
 };
 
 export default deleteBookService;
