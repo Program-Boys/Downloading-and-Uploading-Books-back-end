@@ -10,5 +10,6 @@ const booksControllers = new BooksControllers();
 
 routes.post('', upload.single('Books'), booksControllers.create);
 routes.get('', booksControllers.list);
+routes.delete('/:id', booksControllers.delete);
 
 export default routes;
