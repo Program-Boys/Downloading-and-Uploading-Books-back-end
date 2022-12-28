@@ -1,5 +1,6 @@
 import { Request } from 'express';
-import { PrismaClient, Books } from '@prisma/client';
+import { Books } from '@prisma/client';
+import { prisma } from '../../../prisma/client/client';
 import { randomUUID } from 'crypto';
 import { AppError } from '../../errors/AppError';
 import { IBookRequest } from '../../interfaces/books/books';
@@ -8,8 +9,6 @@ const createBookService = async (
   req: Request,
   { name, gender }: IBookRequest,
 ): Promise<Books> => {
-  const prisma = new PrismaClient();
-
   const user = await prisma.user.findFirst({
     include: {
       books: true,

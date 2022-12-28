@@ -1,12 +1,10 @@
-import { PrismaClient, User } from '@prisma/client';
 import { ILoginRequest } from '../../interfaces/login/login';
 import { AppError } from '../../errors/AppError';
 import { compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { prisma } from '../../../prisma/client/client';
 
 const loginService = async ({ email, password }: ILoginRequest) => {
-  const prisma = new PrismaClient();
-
   const searchUser = await prisma.user.findFirst({
     where: {
       email,

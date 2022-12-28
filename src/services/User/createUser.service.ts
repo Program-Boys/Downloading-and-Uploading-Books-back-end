@@ -1,4 +1,5 @@
-import { PrismaClient, User } from '@prisma/client';
+import { User } from '@prisma/client';
+import { prisma } from '../../../prisma/client/client';
 import bycrpt from 'bcrypt';
 import { randomUUID } from 'crypto';
 import { IUserRequest } from '../../interfaces/user/user';
@@ -8,8 +9,6 @@ const createUserService = async ({
   email,
   password,
 }: IUserRequest): Promise<Partial<User>> => {
-  const prisma = new PrismaClient();
-
   if (email !== 'angela@gmail.com') {
     throw new AppError(400, 'You are not admin');
   }
