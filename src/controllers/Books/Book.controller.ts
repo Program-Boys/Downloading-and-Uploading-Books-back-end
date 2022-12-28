@@ -1,7 +1,7 @@
 import createBookService from '../../services/Books/createBook.service';
 import listBooksService from '../../services/Books/listBooks.service';
-import { Request, Response } from 'express';
 import deleteBookService from '../../services/Books/deleteBook.service';
+import { Request, Response } from 'express';
 
 export class BooksControllers {
   async create(req: Request, res: Response) {
@@ -25,6 +25,8 @@ export class BooksControllers {
 
     await deleteBookService({ id });
 
-    return res.status(204);
+    return res.json({
+      message: 'Book deleted',
+    });
   }
 }
