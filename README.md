@@ -8,7 +8,7 @@
 
 ## 1. Visão Geral
 
-Este é um projeto Back-end onde onde o usuário poderá fazer downloads de E-books de sua escolha. (RESUMO TEMPORÁRIO)
+Este é um projeto Back-end onde o usuário poderá fazer downloads de E-books de sua escolha. (RESUMO TEMPORÁRIO)
 
 Logo abaixo temos a lista de tecnologias usadas (LISTA TEMPORÁRIA):
 
