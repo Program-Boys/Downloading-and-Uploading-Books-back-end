@@ -11,7 +11,7 @@
 Projeto Back-end voltado tanto para o Administrador do site quanto para o usuário. A ideia é que o usuário possa fazer download de diversos E-books de sua escolha, 
 então o site segue na ideia de divulgação de E-books onde os usuários do mesmo possam fazer downloads dos E-books. O administrador do site poderá fazer: Login, cadastro de novos livros, atualização e deleção dos mesmos. 
 
-Logo abaixo temos a lista de tecnologias usadas (LISTA TEMPORÁRIA):
+Logo abaixo temos a lista de tecnologias usadas:
 
 - [NodeJS](https://nodejs.org/en/)
 - [Prisma](https://www.prisma.io/)
