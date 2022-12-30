@@ -15,14 +15,14 @@ const createBookService = async (
     },
     where: {
       id:
-        '776d634d-879b-4d18-bc80-e06714841847' ||
+        '4bdf3191-1ade-4e41-b5f8-4d320dc433a5' ||
         '657ad93b-a1f2-489b-a427-5fbecc3b9459',
     },
   });
 
   const bookAlreadyExists = await prisma.books.findFirst({
     where: {
-      name: req.file?.originalname!,
+      name: req.file?.filename!,
     },
   });
 
@@ -33,7 +33,10 @@ const createBookService = async (
   name = req.file?.originalname!;
   gender = req.file?.originalname!;
 
-  return await prisma.books.create({
+  const newBook = await prisma.books.create({
+    include: {
+      bookFile: true,
+    },
     data: {
       id: randomUUID(),
       name,
@@ -42,6 +45,20 @@ const createBookService = async (
       ownerId: user?.id,
     },
   });
+
+  const fileBook = await prisma.bookFile.create({
+    data: {
+      id: randomUUID(),
+      originalName: req.file?.originalname!,
+      filename: req.file?.filename!,
+      path: req.file?.path!,
+    },
+  });
+
+  newBook.bookFile = fileBook;
+  fileBook.bookId = newBook.id;
+
+  return newBook;
 };
 
 export default createBookService;

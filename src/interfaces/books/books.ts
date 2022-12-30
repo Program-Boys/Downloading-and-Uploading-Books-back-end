@@ -5,4 +5,4 @@ export interface IBookRequest {
   gender: string | undefined;
 }
 
-export type BookDeletion = Pick<Books, 'id'>;
+export type TypeBookId = Pick<Books, 'id'>;

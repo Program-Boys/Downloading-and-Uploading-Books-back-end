@@ -1,8 +1,8 @@
 import { prisma } from '../../../prisma/client/client';
 import { AppError } from '../../errors/AppError';
-import { BookDeletion } from '../../interfaces/books/books';
+import { TypeBookId } from '../../interfaces/books/books';
 
-const deleteBookService = async ({ id }: BookDeletion): Promise<boolean> => {
+const deleteBookService = async ({ id }: TypeBookId): Promise<boolean> => {
   const bookToDelete = await prisma.books.findFirst({
     where: {
       id,
