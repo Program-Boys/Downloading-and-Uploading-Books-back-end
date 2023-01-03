@@ -33,6 +33,15 @@ const createBookService = async (
   name = req.file?.originalname!;
   gender = req.file?.originalname!;
 
+  const fileBook = await prisma.bookFile.create({
+    data: {
+      id: randomUUID(),
+      originalName: req.file?.originalname!,
+      filename: req.file?.filename!,
+      path: req.file?.path!,
+    },
+  });
+
   const newBook = await prisma.books.create({
     include: {
       bookFile: true,
@@ -46,17 +55,8 @@ const createBookService = async (
     },
   });
 
-  const fileBook = await prisma.bookFile.create({
-    data: {
-      id: randomUUID(),
-      originalName: req.file?.originalname!,
-      filename: req.file?.filename!,
-      path: req.file?.path!,
-    },
-  });
-
-  newBook.bookFile = fileBook;
   fileBook.bookId = newBook.id;
+  newBook.bookFile = fileBook;
 
   return newBook;
 };

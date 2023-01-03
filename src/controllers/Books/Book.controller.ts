@@ -3,7 +3,6 @@ import listBooksService from '../../services/Books/listBooks.service';
 import deleteBookService from '../../services/Books/deleteBook.service';
 import { Request, Response } from 'express';
 import listOneBookService from '../../services/Books/listOneBook.service';
-import patchBookFileService from '../../services/Books/patchBookFile.service';
 
 export class BooksControllers {
   async create(req: Request, res: Response) {
@@ -31,15 +30,13 @@ export class BooksControllers {
     return res.status(200).json(oneBook);
   }
 
-  async patchBookFile(req: Request, res: Response) {
-    const { id } = req.params;
+  // async patchBookFile(req: Request, res: Response) {
+  //   const { id } = req.params;
 
-    const bookPatched = await patchBookFileService(req, { id });
+  //   const bookPatched = await patchBookFileService(req, { id });
 
-    const nada = req.file;
-
-    console.log(nada);
-  }
+  //   console.log(bookPatched);
+  // }
 
   async delete(req: Request, res: Response) {
     const { id } = req.params;

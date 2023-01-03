@@ -17,7 +17,7 @@ routes.post(
 );
 routes.get('', booksControllers.list);
 routes.get('/:id', booksControllers.listOneById);
-routes.patch('/:id', upload.single('Books'), booksControllers.patchBookFile);
+// routes.patch('/:id', upload.single('Books'), booksControllers.patchBookFile);
 routes.delete('/:id', tokenAuthMiddleware, booksControllers.delete);
 
 export default routes;

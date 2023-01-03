@@ -29,9 +29,9 @@ model Books {
 
 model BookFile {
   id String @id
-  originalName String
-  filename String
-  path String
+  originalName String?
+  filename String?
+  path String?
   book Books? @relation(fields: [bookId], references: [id])
   bookId String? @unique
 }
