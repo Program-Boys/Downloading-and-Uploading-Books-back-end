@@ -24,14 +24,13 @@ model Books {
   owner User? @relation(fields: [ownerId], references: [id])
   ownerId String?
   createdAt DateTime @default(now())
-  bookFile BookFile?
+  bookFile BookFile? @relation("books")
 }
 
 model BookFile {
   id String @id
-  originalName String?
-  filename String?
-  path String?
-  book Books? @relation(fields: [bookId], references: [id])
+  originalName String
+  filename String
+  book Books? @relation("books", fields: [bookId], references: [id])
   bookId String? @unique
 }
