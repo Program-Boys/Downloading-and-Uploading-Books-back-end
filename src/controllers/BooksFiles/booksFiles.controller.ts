@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import patchBookFileService from '../../services/Books/patchBookFile.service';
+import patchBookFileService from '../../services/BooksFiles/patchBookFile.service';
 import listBooksFilesService from '../../services/BooksFiles/listBooksFilesService.service';
 
 export class BooksFilesController {
