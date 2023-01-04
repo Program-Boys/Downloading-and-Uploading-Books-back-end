@@ -30,14 +30,6 @@ export class BooksControllers {
     return res.status(200).json(oneBook);
   }
 
-  // async patchBookFile(req: Request, res: Response) {
-  //   const { id } = req.params;
-
-  //   const bookPatched = await patchBookFileService(req, { id });
-
-  //   console.log(bookPatched);
-  // }
-
   async delete(req: Request, res: Response) {
     const { id } = req.params;
 
