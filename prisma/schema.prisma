@@ -31,6 +31,7 @@ model BookFile {
   id String @id
   originalName String
   filename String
+  path String
   book Books? @relation("books", fields: [bookId], references: [id])
   bookId String? @unique
 }
