@@ -15,7 +15,7 @@ const createBookService = async (
     },
     where: {
       id:
-        '879627f6-de28-43d0-b7fe-347a08a03ded' ||
+        'aacf5712-25d1-4446-ab83-34dac2c25bbe' ||
         '657ad93b-a1f2-489b-a427-5fbecc3b9459',
     },
   });
@@ -45,6 +45,7 @@ const createBookService = async (
           id: randomUUID(),
           originalName: req.file?.originalname!,
           filename: req.file?.filename!,
+          path: req.file?.path!,
         },
       },
     },
