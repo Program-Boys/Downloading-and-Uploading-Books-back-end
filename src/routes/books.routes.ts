@@ -17,6 +17,7 @@ routes.post(
 );
 routes.get('', booksControllers.list);
 routes.get('/:id', booksControllers.listOneById);
+routes.patch('/:id', booksControllers.patch);
 routes.delete('/:id', tokenAuthMiddleware, booksControllers.delete);
 
 export default routes;
