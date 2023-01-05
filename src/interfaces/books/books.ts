@@ -6,3 +6,4 @@ export interface IBookRequest {
 }
 
 export type TypeBookId = Pick<Books, 'id'>;
+export type TypePatchBook = Pick<Books, 'id' | 'name' | 'gender'>;
