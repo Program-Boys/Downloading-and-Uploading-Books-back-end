@@ -38,7 +38,6 @@ const createBookService = async (
       id: randomUUID(),
       name,
       gender,
-      createdAt: new Date(),
       ownerId: user?.id,
       bookFile: {
         create: {
