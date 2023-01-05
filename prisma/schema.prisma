@@ -24,6 +24,7 @@ model Books {
   owner User? @relation(fields: [ownerId], references: [id])
   ownerId String?
   createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
   bookFile BookFile? @relation("books")
 }
 
