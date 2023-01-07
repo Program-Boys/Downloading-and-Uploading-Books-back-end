@@ -1,39 +1,12 @@
-import { Books } from "@prisma/client";
+import { User } from '@prisma/client';
 
-export interface UserProps {
-    email: string;
-    password: string;
-    books: Books[]
-}
+export class InMemoryUserRepository implements User {
+  id!: string;
+  email!: string;
+  password!: string;
+  public userInMemory: User[] = [];
 
-export class User {
-    props: UserProps
-    constructor(props: UserProps) {
-        this.props = props
-    }
-
-    public get email() {
-        return this.props.email;
-    }
-
-    public set email(email: string) {
-        this.props.email = this.email
-    }
-
-    public get password() {
-        return this.props.password;
-    }
-
-    public set password(password: string) {
-        this.props.password = this.password
-    }
-
-    public get books() {
-        return this.props.books;
-    }
-
-    public set books(books: Books[]) {
-        this.props.books = this.books
-    }
-
+  async create(user: User) {
+    this.userInMemory.push(user);
+  }
 }
