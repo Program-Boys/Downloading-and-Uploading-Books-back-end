@@ -1,4 +1,3 @@
-import { date } from 'yup';
 import { prisma } from '../../../prisma/client/client';
 import { AppError } from '../../errors/AppError';
 import { TypePatchBook } from '../../interfaces/books/books';
