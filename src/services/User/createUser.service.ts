@@ -8,7 +8,7 @@ import { AppError } from '../../errors/AppError';
 const createUserService = async ({
   email,
   password,
-}: IUserRequest): Promise<Partial<User>> => {
+}: IUserRequest): Promise<User> => {
   if (email !== 'angela@gmail.com') {
     throw new AppError(400, 'You are not admin');
   }
@@ -24,13 +24,7 @@ const createUserService = async ({
     },
   });
 
-  const userExit = {
-    id: user.id,
-    email: user.email,
-    books: user.books,
-  };
-
-  return userExit;
+  return { ...user, password: '' };
 };
 
 export default createUserService;
