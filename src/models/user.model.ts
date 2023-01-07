@@ -1,9 +1,6 @@
 import { User } from '@prisma/client';
 
-export class InMemoryUserRepository implements User {
-  id!: string;
-  email!: string;
-  password!: string;
+export class InMemoryUserRepository {
   public userInMemory: User[] = [];
 
   async create(user: User) {
