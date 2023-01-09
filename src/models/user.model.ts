@@ -6,4 +6,8 @@ export class InMemoryUserRepository {
   async create(user: User) {
     this.userInMemory.push(user);
   }
+
+  async list() {
+    return this.userInMemory;
+  }
 }
