@@ -1,7 +1,7 @@
 import { prisma } from '../../../prisma/client/client';
 import { AppError } from '../../errors/AppError';
 import { TypePatchBook } from '../../interfaces/books/books';
-import { Books } from '../../models/book.model';
+import { Books } from '@prisma/client';
 
 const patchBookService = async ({
   id,
