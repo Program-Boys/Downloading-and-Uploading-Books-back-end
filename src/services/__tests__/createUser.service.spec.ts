@@ -1,34 +1,47 @@
-import { InMemoryUserRepository } from '../../models/user.model';
-import createUserService from '../User/createUser.service';
+import { InMemoryUserRepository } from '../../repositories/in-memory/user.model';
+import { User } from '../../entities/user';
+import { IUsersRepository } from '../../repositories/IUserRepositories';
+import { CreateUserService } from '../../models/User/CreateUser.service';
+import { ListUserService } from '../../models/User/ListUser.service';
 
 describe('Create a User', () => {
-  const userRepository = new InMemoryUserRepository();
+  let userRepository: IUsersRepository;
+  let createUserService: CreateUserService;
+  let listUserService: ListUserService;
+
+  beforeAll(() => {
+    userRepository = new InMemoryUserRepository();
+    createUserService = new CreateUserService(userRepository);
+    listUserService = new ListUserService(userRepository);
+  });
 
   it('Should be able to create a user', async () => {
-    const email = 'angela@gmail.com';
-    const password = '12345678';
+    const userData: User = {
+      email: 'angela@gmail.com',
+      password: '12345678',
+    };
 
-    const user = await createUserService({ email, password });
+    const user = await createUserService.execute(userData);
 
-    await userRepository.create(user);
-
-    expect(userRepository.userInMemory[0]).toBe(user);
+    expect(user).toHaveProperty('id');
   });
 
   it('Should not be able to create a user', async () => {
-    const email = 'guiteste@gmail.com';
-    const password = '12345678';
-
+    const userData: User = {
+      email: 'guitest@gmail.com',
+      password: '12345678',
+    };
     expect(
-      await createUserService({ email, password })
+      await createUserService
+        .execute(userData)
         .then()
         .catch((_) => _),
     );
   });
 
-  it('Should be able to list the users', async () => {
-    const users = await userRepository.list();
+  it('Should be able to list the user', async () => {
+    const user = await listUserService.execute();
 
-    expect(users.length).toBeGreaterThan(0);
+    expect(user.length).toBeGreaterThan(0);
   });
 });
