@@ -1,5 +1,4 @@
 import { User } from '../../entities/user';
-import { AppError } from '../../errors/AppError';
 import { IUsersRepository } from '../../repositories/IUserRepositories';
 
 interface IUserRequest {
@@ -12,7 +11,7 @@ class CreateUserService {
 
   async execute({ email, password }: IUserRequest) {
     if (email !== 'angela@gmail.com') {
-      throw new AppError(400, 'You are not admin');
+      throw new Error('You are not admin');
     }
 
     const userCreate = User.create({ email, password });
