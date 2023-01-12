@@ -44,6 +44,16 @@ class PrismaBooksRepository implements IBooksRepository {
 
     return books;
   }
+
+  async listOne({ id }: Book): Promise<Book> {
+    let oneBook = (await prisma.books.findFirst({
+      where: {
+        id,
+      },
+    })) as Book;
+
+    return oneBook;
+  }
 }
 
 export { PrismaUsersRepository };
