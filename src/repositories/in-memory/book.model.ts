@@ -16,6 +16,14 @@ class InMemoryBookRepository implements IBooksRepository {
   async list() {
     return this.books;
   }
+
+  async listOne({ id }: Book): Promise<Book> {
+    let findOne = this.books.find((book) => book.id == id);
+
+    findOne = findOne as Book;
+
+    return findOne;
+  }
 }
 
 export { InMemoryBookRepository };
