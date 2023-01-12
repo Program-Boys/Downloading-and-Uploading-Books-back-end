@@ -33,6 +33,14 @@ class Book {
   static list(): Book[] {
     return allBooks;
   }
+
+  static listOne(id: string | Book): Book {
+    let findBook = allBooks.find((book) => book.id === id);
+
+    findBook = findBook as Book;
+
+    return findBook;
+  }
 }
 
 export { Book };
