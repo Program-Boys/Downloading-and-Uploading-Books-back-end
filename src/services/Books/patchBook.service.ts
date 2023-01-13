@@ -18,10 +18,6 @@ const patchBookService = async ({
     throw new AppError(404, 'Book not foud.');
   }
 
-  if (name.length < 5 || gender.length < 5) {
-    throw new AppError(400, 'Enter characters greater than five.');
-  }
-
   const patchedBook = await prisma.books.update({
     where: {
       id,
