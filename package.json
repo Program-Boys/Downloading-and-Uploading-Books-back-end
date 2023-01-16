@@ -2,6 +2,7 @@
   "name": "Downloading-and-Uploading-Books",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "repository": "git@github.com:Program-Boys/Downloading-and-Uploading-Books.git",
   "author": "Enrique <enrique.barbosasilva@gmail.com>",
   "license": "MIT",
