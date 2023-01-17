@@ -2,15 +2,12 @@
   "name": "Downloading-and-Uploading-Books",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "repository": "git@github.com:Program-Boys/Downloading-and-Uploading-Books.git",
   "author": "Enrique <enrique.barbosasilva@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
-    "test": "jest",
-    "build": "yarn && tsc",
-    "start": "node dist/src/server.js"
+    "test": "jest"
   },
   "devDependencies": {
     "@types/express": "^4.17.15",
