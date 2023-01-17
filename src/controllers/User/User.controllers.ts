@@ -23,6 +23,6 @@ export class UserController {
 
     const token = await loginService({ email, password });
 
-    return res.status(200).json(200);
+    return res.status(200).json(token);
   }
 }
