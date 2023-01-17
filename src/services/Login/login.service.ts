@@ -27,7 +27,7 @@ const loginService = async ({ email, password }: ILoginRequest) => {
     },
   );
 
-  return token;
+  return { token: token };
 };
 
 export default loginService;
