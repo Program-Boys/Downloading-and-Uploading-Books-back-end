@@ -15,7 +15,7 @@ export class UserController {
   async list(req: Request, res: Response) {
     const listUser = await listUserService();
 
-    return res.json(listUser);
+    return res.status(200).json(listUser);
   }
 
   async login(req: Request, res: Response) {
@@ -23,8 +23,6 @@ export class UserController {
 
     const token = await loginService({ email, password });
 
-    return res.status(200).json({
-      token: token,
-    });
+    return res.status(200).json(200);
   }
 }
