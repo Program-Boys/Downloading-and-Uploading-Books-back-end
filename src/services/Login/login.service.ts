@@ -27,7 +27,7 @@ const loginService = async ({ email, password }: ILoginRequest) => {
     },
   );
 
-  return { token: token };
+  return { token: token, userId: searchUser?.id };
 };
 
 export default loginService;
