@@ -2,3 +2,5 @@ node_modules
 yarn.lock
 uploads
 .env
+.vercel
+.package-lock.json

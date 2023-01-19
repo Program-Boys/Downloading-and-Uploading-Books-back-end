@@ -1,0 +1,26 @@
+// {
+//   "env": {
+//     "DATABASE_URL": "postgresql://guilherme_linux:2003@localhost:5432/downloadinganduploadingbooks?schema=public",
+//     "SECRET_KEY": "12345646541654984"
+//   },
+//   "outputDirectory": "dist/",
+//   "public": true,
+//   "build": {
+//     "src": "src/server.ts",
+//     "use": "@vercel/node"
+//   },
+//   "routes": [
+//     {
+//       "src": "/user",
+//       "dest": "src/routes/user.routes.ts"
+//     },
+//     {
+//       "src": "/books",
+//       "dest": "src/routes/books.routes.ts"
+//     },
+//     {
+//       "src": "/booksFiles",
+//       "dest": "src/routes/booksFiles.routes.ts"
+//     }
+//   ]
+// }
