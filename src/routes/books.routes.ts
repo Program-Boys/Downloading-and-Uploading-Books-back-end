@@ -13,7 +13,6 @@ const booksControllers = new BooksControllers();
 routes.post(
   '',
   upload.single('Books'),
-  verifyNameGenderLength,
   tokenAuthMiddleware,
   booksControllers.create,
 );
