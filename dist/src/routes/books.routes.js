@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var Book_controller_1 = require("../controllers/Books/Book.controller");
+var multerConfig_1 = require("../multerConfig");
+var multer_1 = __importDefault(require("multer"));
+var tokenAuth_middleware_1 = __importDefault(require("../middlewares/tokenAuth.middleware"));
+var verifyNameGenderLength_middleware_1 = __importDefault(require("../middlewares/verifyNameGenderLength.middleware"));
+var upload = (0, multer_1.default)({ storage: multerConfig_1.storage });
+var routes = (0, express_1.Router)();
+var booksControllers = new Book_controller_1.BooksControllers();
+routes.post('', upload.single('Books'), verifyNameGenderLength_middleware_1.default, tokenAuth_middleware_1.default, booksControllers.create);
+routes.get('', booksControllers.list);
+routes.get('/:id', booksControllers.listOneById);
+routes.patch('/:id', verifyNameGenderLength_middleware_1.default, booksControllers.patch);
+routes.delete('/:id', tokenAuth_middleware_1.default, booksControllers.delete);
+exports.default = routes;
