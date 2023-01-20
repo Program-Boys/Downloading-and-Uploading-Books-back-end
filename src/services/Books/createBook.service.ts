@@ -14,9 +14,7 @@ const createBookService = async (
       books: true,
     },
     where: {
-      id:
-        'be82c4c2-bcc1-4fe9-993a-fc59a672dd77' ||
-        '657ad93b-a1f2-489b-a427-5fbecc3b9459',
+      email: 'angela@gmail.com',
     },
   });
 
