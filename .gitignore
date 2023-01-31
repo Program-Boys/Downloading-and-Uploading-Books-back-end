@@ -4,3 +4,4 @@ uploads
 .env
 .vercel
 .package-lock.json
+dist
