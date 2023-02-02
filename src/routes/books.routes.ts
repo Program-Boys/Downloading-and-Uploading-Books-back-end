@@ -8,17 +8,16 @@ import verifyNameGenderLength from '../middlewares/verifyNameGenderLength.middle
 const upload = multer({ storage: storage });
 
 const routes = Router();
-const booksControllers = new BooksControllers();
 
 routes.post(
   '',
   upload.single('Books'),
   tokenAuthMiddleware,
-  booksControllers.create,
+  BooksControllers.create,
 );
-routes.get('', booksControllers.list);
-routes.get('/:id', booksControllers.listOneById);
-routes.patch('/:id', verifyNameGenderLength, booksControllers.patch);
-routes.delete('/:id', tokenAuthMiddleware, booksControllers.delete);
+routes.get('', BooksControllers.list);
+routes.get('/:id', BooksControllers.listOneById);
+routes.patch('/:id', verifyNameGenderLength, BooksControllers.patch);
+routes.delete('/:id', tokenAuthMiddleware, BooksControllers.delete);
 
 export default routes;

@@ -3,10 +3,9 @@ import { UserController } from '../controllers/User/User.controllers';
 import verifyEmailMiddleware from '../middlewares/verifyEmail.middleware';
 
 const routes = Router();
-const userController = new UserController();
 
-routes.post('', verifyEmailMiddleware, userController.create);
-routes.get('', userController.list);
-routes.post('/login', userController.login);
+routes.post('', verifyEmailMiddleware, UserController.create);
+routes.get('', UserController.list);
+routes.post('/login', UserController.login);
 
 export default routes;

@@ -5,9 +5,8 @@ import { storage } from '../multerConfig';
 
 const upload = multer({ storage: storage });
 const routes = Router();
-const booksFilesController = new BooksFilesController();
 
-routes.get('', booksFilesController.list);
-routes.patch('/:id', upload.single('Books'), booksFilesController.updateFile);
+routes.get('', BooksFilesController.list);
+routes.patch('/:id', upload.single('Books'), BooksFilesController.updateFile);
 
 export default routes;
