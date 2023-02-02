@@ -3,13 +3,13 @@ import patchBookFileService from '../../services/BooksFiles/patchBookFile.servic
 import listBooksFilesService from '../../services/BooksFiles/listBooksFilesService.service';
 
 export class BooksFilesController {
-  async list(req: Request, res: Response) {
+  static async list(req: Request, res: Response) {
     const booksFiles = await listBooksFilesService();
 
     return res.status(200).json(booksFiles);
   }
 
-  async updateFile(req: Request, res: Response) {
+  static async updateFile(req: Request, res: Response) {
     const { id } = req.params;
     const { originalName, filename } = req.body;
     const updatedBookFiles = await patchBookFileService(req, {
