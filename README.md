@@ -3,6 +3,10 @@
 ## Tabela de Conteúdos
 
 - [Visão Geral](#1-visão-geral)
+- [Início Rápido](#2-início-rápido)
+  - [Instalando Dependências](#21-instalando-dependências)
+  - [Variáveis de Ambiente](#22-variáveis-de-ambiente)
+  - [Migrations](#23-migrations)
 
 ---
 
@@ -21,3 +25,43 @@ Logo abaixo temos a lista de tecnologias usadas:
 - [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 - [Jest](https://jestjs.io/pt-BR/)
 - [Supertest](https://www.npmjs.com/package/supertest)
+
+---
+
+## 2. Início Rápido
+
+[ Voltar para o topo ](#tabela-de-conteúdos)
+
+### 2.1. Instalando Dependências
+
+Clone o projeto em sua máquina e instale as dependências com o comando:
+
+```shell
+yarn
+```
+
+### 2.2. Variáveis de Ambiente
+
+Em seguida, crie um arquivo **.env**, copiando o formato do arquivo **.env.example**:
+
+```
+cp .env.example .env
+```
+
+Configure suas variáveis de ambiente com suas credenciais do Postgres e uma nova database da sua escolha.
+
+### 2.3. Migrations
+
+Execute as migrations com o comando:
+
+```
+npx prisma migrate dev
+```
+
+### 2.4. Visualização das tabelas
+
+Execute o seguinte código para ter acesso as tabelas:
+
+```
+npx prisma studio
+```
